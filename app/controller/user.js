@@ -1,7 +1,8 @@
 'use strict';
 
-const Controller = require('egg').Controller;
-class HomeController extends Controller {
+const BaseController = require('../core/base.js');
+
+class UserController extends BaseController {
   async login() {
      await this.ctx.render('login');
      
@@ -11,16 +12,14 @@ class HomeController extends Controller {
 
   }
   async doLogin() {
-    await this.ctx.render('public/success');
-
+     await this.success('/');
 
   }
   async doRegister() {
-    await this.ctx.render('public/error');
-    
+    await this.error('/');
 
   }
 }
 
-module.exports = HomeController;
+module.exports = UserController;
 
