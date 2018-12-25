@@ -13,9 +13,5 @@ module.exports = app => {
   router.get('/change',controller.home.change);
   router.get('/info',controller.home.info);
   router.get('/index', controller.index.info);
-  router.get('/index',controller.index.info);
-
-
-
 
 }
