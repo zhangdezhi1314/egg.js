@@ -11,6 +11,11 @@ module.exports = app => {
 
   router.get('/',date,controller.home.index);
   router.get('/change',controller.home.change);
-  router.get('/info',controller.home.info)
+  router.get('/info',controller.home.info);
+  router.get('/index', controller.index.info);
+  router.get('/index',controller.index.info);
+
+
+
 
 }
