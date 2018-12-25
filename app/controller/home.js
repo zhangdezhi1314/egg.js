@@ -6,6 +6,11 @@ class HomeController extends Controller {
      this.ctx.body = 'hello egg.js';
 
   }
+
+  async change() {
+    this.ctx.body = 'hello home';
+
+  }
 }
 
 module.exports = HomeController;
