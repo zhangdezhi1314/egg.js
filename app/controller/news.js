@@ -3,7 +3,9 @@ const Controller = require('egg').Controller;
 
 class NewsController extends Controller {
     async list() {
-      this.ctx.body = '哈哈呀呢';
+
+      this.ctx.status = 301;
+      this.ctx.redirect('/shop');
 
     }
 }
