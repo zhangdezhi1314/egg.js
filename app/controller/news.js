@@ -1,13 +1,14 @@
+
 const Controller = require('egg').Controller;
 
-class HomeController extends Controller {
+class NewsController extends Controller {
     async list() {
-        this.ctx.body = 'hello';
-        
-      }
+      this.ctx.body = '哈哈呀呢';
 
-    
+    }
 }
 
-module.exports = HomeController;
+module.exports = NewsController;
+
+
 
