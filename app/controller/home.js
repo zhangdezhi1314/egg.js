@@ -11,6 +11,15 @@ class HomeController extends Controller {
     this.ctx.body = 'hello home';
 
   }
+  async info() {
+    // console.log(this.ctx.query);
+    console.log(this.ctx.query);
+    
+
+   
+
+
+  }
 }
 
 module.exports = HomeController;

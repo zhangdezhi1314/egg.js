@@ -11,5 +11,6 @@ module.exports = app => {
 
   router.get('/',date,controller.home.index);
   router.get('/change',controller.home.change);
+  router.get('/info',controller.home.info)
 
 }
