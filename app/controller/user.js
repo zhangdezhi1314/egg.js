@@ -1,6 +1,8 @@
 'use strict';
 
-const BaseController = require('../core/base.js');
+// const BaseController = require('../core/base.js');
+const BaseController = require('../core/base');
+
 
 class UserController extends BaseController {
   async login() {
@@ -11,10 +13,12 @@ class UserController extends BaseController {
     await this.ctx.render('regester');
 
   }
+
   async doLogin() {
-     await this.success('/');
+    await this.success('/');
 
   }
+
   async doRegister() {
     await this.error('/');
 

@@ -8,18 +8,20 @@ class BaseController extends Controller {
          age:'20'
      }
   }
-  async success(redirectUrl) {
+
+  
+async success(redirectUrl) {
     await this.ctx.render('public/success',{
-            redirectUrl:redirectUrl
-    });
+        redirectUrl:redirectUrl
+    })
+}
 
-  }
-  async error(redirectUrl) {
-      await this.ctx.render('public/error',{
-            redirectUrl:redirectUrl
-      });
+async error(redirectUrl) {
+    await this.ctx.render('public/error',{
+        redirectUrl:redirectUrl
+    })
+}
 
-  }
 }
 
 module.exports = BaseController;
