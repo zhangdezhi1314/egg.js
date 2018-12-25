@@ -7,7 +7,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1545701230372_4435';
 
   // add your config here
-  config.middleware = [];
+  config.middleware = ['date'];
 
   //配置模板引擎
   config.view = {
