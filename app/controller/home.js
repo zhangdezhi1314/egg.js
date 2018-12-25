@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
-     this.ctx.body = 'hello egg.js';
+     await this.ctx.render('home');
      
   }
 }
