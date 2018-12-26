@@ -3,8 +3,12 @@
 const Controller = require('egg').Controller;
 class OrderController extends Controller {
   async index() {
-     this.ctx.body = '我是订单页面';
-     
+
+    let orderResult = await this.ctx.model.User.find();
+ 
+
+    this.ctx.body = orderResult
+
      
   }
 
