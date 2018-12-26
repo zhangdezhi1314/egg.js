@@ -3,18 +3,19 @@
 const Controller = require('egg').Controller;
 class ManagerController extends Controller {
   async index() {
-       await this.ctx.render('admin/manager/index');
+      await this.ctx.render('admin/manager/index');
        
      
   }
 
   async add() {
-        this.ctx.body = '管理员增加';
+      await this.ctx.render('admin/manager/add');
 
   }
 
   async edit() {
-        this.ctx.body = '编辑管理员';
+      await this.ctx.render('admin/manager/edit');
+      
 
   }
 
