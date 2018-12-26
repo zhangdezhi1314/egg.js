@@ -3,7 +3,8 @@
 const Controller = require('egg').Controller;
 class ManagerController extends Controller {
   async index() {
-        this.ctx.body = '管理员列表'
+       await this.ctx.render('admin/manager/index');
+       
      
   }
 
@@ -19,7 +20,7 @@ class ManagerController extends Controller {
 
   async delete() {
         this.ctx.body = '管理员的删除';
-        
+
   }
 
 

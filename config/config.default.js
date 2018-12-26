@@ -11,9 +11,9 @@ module.exports = appInfo => {
 
   //配置模板引擎
   config.view = {
-    defaultViewEngine: 'nunjucks',
     mapping: {
       '.html': 'ejs',
+      '.nj': 'nunjucks',
     },
   };
 
