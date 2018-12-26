@@ -17,5 +17,13 @@ module.exports = appInfo => {
     },
   };
 
+ //配置数据库连接
+  config.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1/cms',
+      options: {},
+    },
+  };
+
   return config;
 };

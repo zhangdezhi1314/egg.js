@@ -3,8 +3,37 @@
 const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
-     await this.ctx.render('home');
+     this.ctx.body = '首页'
      
+  }
+
+  async user() {
+
+    let result = await this.ctx.model.User.find({});
+    console.log(result);
+
+
+    
+    this.ctx.body = '我是用户页面';
+
+  }
+
+  async add() {
+   
+    let user = new this.ctx.model.User({
+      username:'zhangdezhi',
+      password:'123456',
+      status:'2'
+    })
+
+    let result = await user.save();
+
+    console.log(result);
+
+
+    this.ctx.body = '增加用户成功';
+
+
   }
 }
 
