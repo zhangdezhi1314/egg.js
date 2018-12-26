@@ -9,11 +9,10 @@ class HomeController extends Controller {
 
   async user() {
 
-    let result = await this.ctx.model.User.find({});
+    let result = await this.service.user.getUserList();
     console.log(result);
 
 
-    
     this.ctx.body = '我是用户页面';
 
   }
