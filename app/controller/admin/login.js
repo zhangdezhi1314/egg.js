@@ -8,8 +8,28 @@ class   LoginController extends BaseController {
   }
   //执行登录的方法
   async doLogin() {
-      console.log(this.ctx.request.body);
+     
+      let result = this.ctx.request.body;
+      let code = result.code;
+      let username = result.username;
+      let password = result.password;
+
+      let newPassword = await  this.service.tools.md5(password);
       
+
+
+     
+
+      if(code == this.ctx.session.code){
+        
+      } else {
+          await this.error('/admin/login','验证码不正确!');
+
+      }
+
+
+
+
 
   }
 
