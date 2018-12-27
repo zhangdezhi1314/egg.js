@@ -17,9 +17,6 @@ class   LoginController extends BaseController {
       let newPassword = await  this.service.tools.md5(password);
       
 
-
-     
-
       if(code.toUpperCase() == this.ctx.session.code.toUpperCase()){
           let result = await this.ctx.model.Admin.find({"username":username,"password":newPassword});
           if(result.length > 0){
@@ -36,11 +33,12 @@ class   LoginController extends BaseController {
           await this.error('/admin/login','验证码不正确!');
 
       }
+  }
 
-
-
-
-
+  //退出登录
+  async loginOut() {
+      this.ctx.session.userInfo = null;
+      this.ctx.redirect('/admin/login');
   }
 
 }

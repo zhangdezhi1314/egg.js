@@ -8,6 +8,9 @@ module.exports = options => {
         let pathname = url.parse(ctx.request.url).pathname;
 
         if(ctx.session.userInfo){
+            //设置全局变量
+            ctx.state.userInfo = ctx.session.userInfo;
+
             await next();
 
         } else {
