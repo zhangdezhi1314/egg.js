@@ -6,6 +6,10 @@ class   LoginController extends BaseController {
       await this.ctx.render('admin/login');
      
   }
+  async doLogin() {
+      await this.success('admin/login');
+
+  }
 
 }
 

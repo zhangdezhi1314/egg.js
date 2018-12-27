@@ -26,8 +26,9 @@ module.exports = app => {
     router.get('/admin/access/delete',controller.admin.access.delete);
 
     //登录
-    router.get('/admin/login',controller.admin.login.index)
-
+    router.get('/admin/login',controller.admin.login.index);
+    router.get('/admin/doLogin',controller.admin.login.doLogin);
+   
 
 
 }

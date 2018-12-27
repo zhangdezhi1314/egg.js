@@ -17,6 +17,16 @@ module.exports = appInfo => {
     },
   };
 
+  //配置session
+  config.session = {
+      key:'SESSION_ID',
+      maxAge:864000,
+      httpOnly:true,
+      encrypt:true,
+      renew:true
+
+  }
+
  //配置数据库连接
   config.mongoose = {
     client: {

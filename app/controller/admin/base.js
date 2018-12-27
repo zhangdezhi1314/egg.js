@@ -1,6 +1,7 @@
 'use strict';
 
 const Controller = require('egg').Controller;
+const svgCaptcha = require('svg-captcha');
 class   BaseController extends Controller {
     async success(redirectUrl) {
         await this.ctx.render('admin/public/success',{
@@ -16,7 +17,14 @@ class   BaseController extends Controller {
 
     }
 
+    async code() {
+      let captcha = svgCaptcha.create();
 
+      this.ctx.session.code = captcha.text;
+      this.ctx.response.type = 'image/svg+xml';
+      this.ctx.body = captcha.data;
+      
+    }
 
 }
 
