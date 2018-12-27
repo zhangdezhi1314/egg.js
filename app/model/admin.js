@@ -1,25 +1,26 @@
 module.exports = app => {
-    const mongoose = app.mongoose;
-    const Schema = mongoose.Schema;
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
 
-    let date = new Date();
+  var d=new Date();
+ 
+  const AdminSchema = new Schema({
+    username: { type: String  },
+    password: { type: String  },
+    mobile: { type: String  },
+    email: { type: String  },
+    status: { type: Number,default:1  },
+    role_id: { type:Schema.Types.ObjectId },
+    add_time: {           
+      type:Number,        
+      default: d.getTime()
+  
+     },
+     is_super: { type:Number}  
 
-   
-    const AdminSchema = new Schema({
-      username: { type: String  },
-      password: { type: String  },
-      mobile: { type: Number },
-      email: { type: String },
-      status: { type:Number,default:1 },
-      add_time: { 
-                type:Number,
-                default:date.getTime()
-        },
-      is_supper: { type:Number },
-      role_id: { type:Schema.Types.objectId },
 
-    });
-   
-    return conn.model('Admin', AdminSchema,'admin');
+  });
 
-  }
+ 
+  return mongoose.model('Admin', AdminSchema,'admin');
+}

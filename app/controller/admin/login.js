@@ -20,8 +20,18 @@ class   LoginController extends BaseController {
 
      
 
-      if(code == this.ctx.session.code){
-        
+      if(code.toUpperCase() == this.ctx.session.code.toUpperCase()){
+          let result = await this.ctx.model.Admin.find({"username":username,"password":newPassword});
+          if(result.length > 0){
+              this.ctx.session.userInfo = result[0];
+              this.ctx.redirect('/admin/manager');
+
+          } else {
+            await this.error('/admin/login','用户名或密码不正确!');
+          }
+          
+
+
       } else {
           await this.error('/admin/login','验证码不正确!');
 
