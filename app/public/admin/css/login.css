@@ -1,12 +1,4 @@
-/*
-// | MobileCms 移动应用软件后台管理系统
-// +----------------------------------------------------------------------
-// | provide by ：59miao.com
-// 
-// +----------------------------------------------------------------------
-// | Author: htzhanglong@foxmail.com
-// +----------------------------------------------------------------------
-*/
+
 @CHARSET "UTF-8";
 body {
 	background:#01458E;
@@ -15,7 +7,6 @@ body {
 	width:740px;
 	height:300px;
 	background:url(../images/loginbg.jpg) no-repeat left center;
-	/*background:#EDEFFC;*/
 	margin:120px auto 0 auto;
 }
 #login dl{
@@ -57,7 +48,7 @@ body {
 #verify{	
 	height:30px;
 	line-height:30px;	  
-    width: 90px;
+    width: 140px;
 	margin-right:3px;
 }
 #verify_img{
