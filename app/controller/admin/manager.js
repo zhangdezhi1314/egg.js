@@ -9,7 +9,11 @@ class ManagerController extends BaseController {
   }
 
   async add() {
-      await this.ctx.render('admin/manager/add');
+      let userRole = await  this.ctx.model.Role.find();
+
+      await this.ctx.render('admin/manager/add',{
+          userRole:userRole
+      });
 
   }
 
