@@ -3,7 +3,20 @@
 const BaseController = require('./base');
 class ManagerController extends BaseController {
   async index() {
-      await this.ctx.render('admin/manager/index');
+
+      let result = await this.ctx.model.Admin.aggregate([{
+          $lookup:{
+              from:'role',
+              localField:'role_id',
+              foreignField:'_id',
+              as:'role'
+          }
+      }])
+
+     
+      await this.ctx.render('admin/manager/index',{
+          list:result
+      });
        
      
   }
@@ -52,13 +65,9 @@ class ManagerController extends BaseController {
 
   async edit() {
       await this.ctx.render('admin/manager/edit');
-      
-
+    
   }
 
-
-
-  
 }
 
 module.exports = ManagerController;
