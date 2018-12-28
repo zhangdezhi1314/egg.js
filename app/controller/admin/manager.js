@@ -64,7 +64,12 @@ class ManagerController extends BaseController {
   }
 
   async edit() {
-      await this.ctx.render('admin/manager/edit');
+      
+      let result = await this.ctx.model.Role.find();
+      
+      await this.ctx.render('admin/manager/edit',{
+          list:result
+      });
     
   }
 
