@@ -12,7 +12,8 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive input-form">
-                        <form action="/doAdd" method="post">
+                        <form action="/admin/manager/doAdd" method="post">
+                            <input type="hidden" name="_csrf" value="<%=csrf%>"/>
                             <ul>
                                 <li>  管理员名称: <input type="text" name="username"/></li>
 
