@@ -4,7 +4,12 @@ const BaseController = require('./base');
 
 class   RoleController extends BaseController {
     async index() {
-        await this.ctx.render('admin/role/index');
+
+        let result = await this.ctx.model.Role.find();
+      
+        await this.ctx.render('admin/role/index',{
+            list:result
+        });
         
     }
 
@@ -18,7 +23,7 @@ class   RoleController extends BaseController {
         let result = this.ctx.request.body;
         let title = result.title;
         let description = result.description;
-        
+
         let role = new this.ctx.model.Role({
             title:title,
             description:description
@@ -38,7 +43,12 @@ class   RoleController extends BaseController {
     }
 
     async edit() {
-        await this.ctx.render('admin/role/edit');
+        let id = this.ctx.query.id;
+        let result = await this.ctx.model.Role.find({'_id':id})
+
+        await this.ctx.render('admin/role/edit',{
+            list:result[0]
+        });
 
     }
 
