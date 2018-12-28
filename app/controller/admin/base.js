@@ -34,11 +34,8 @@ class   BaseController extends Controller {
         let id = result.id;
 
         await this.ctx.model[model].deleteOne({'_id':id});
-
-        this.ctx.redirect(this.ctx.request.headers['referer']);
+        this.ctx.redirect(this.ctx.state.prevPage);
         
-
-
     }
 
 }
