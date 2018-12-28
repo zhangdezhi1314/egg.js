@@ -32,6 +32,10 @@ module.exports = app => {
     router.post('/admin/doLogin',controller.admin.login.doLogin);
     router.get('/admin/verify', controller.admin.base.verify);
     router.get('/admin/loginOut',controller.admin.login.loginOut);
+
+
+    //删除
+    router.get('/admin/delete',controller.admin.base.delete)
    
 
 
