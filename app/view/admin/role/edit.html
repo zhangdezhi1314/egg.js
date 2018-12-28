@@ -17,6 +17,7 @@
                     <div class="table-responsive input-form">
                         <form action="/admin/role/doEdit" method="post">
                             <input type="hidden" name="_csrf" value="<%=csrf%>"/>
+                            <input type="hidden" name="_id" value="<%=list._id%>"/>
                             <ul>
                                 <li>角色名称: <input type="text" name="title" value="<%=list.title%>"/></li>
 

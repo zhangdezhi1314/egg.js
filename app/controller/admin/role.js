@@ -52,6 +52,23 @@ class   RoleController extends BaseController {
 
     }
 
+    async doEdit() {
+        let result = this.ctx.request.body;
+
+        let id = result._id;
+        let title = result.title;
+        let description = result.description;
+
+        let res = await this.ctx.model.Role.updateOne({'_id':id},{title,description});
+
+        if(res.ok){
+            await this.success('/admin/role','编辑角色成功');
+
+        }
+
+
+    }
+
   
 
 
