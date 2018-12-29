@@ -12,7 +12,7 @@ module.exports = app => {
       module_id: { 
           type: Schema.Types.Mixed  
         },
-      sort: { type:Schema.Types.ObjectId },
+      sort: { type:Number },
       add_time: {           
         type:Number,        
         default:100

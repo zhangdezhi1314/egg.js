@@ -13,9 +13,6 @@ class ManagerController extends BaseController {
             }
         }])
 
-        console.log(JSON.stringify(result));
-
-
         
         await this.ctx.render('admin/manager/index',{
             list:result
