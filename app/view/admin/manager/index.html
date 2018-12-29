@@ -24,8 +24,10 @@
                             <td><%=list[i].username%></td>
                             <td><%=list[i].mobile%></td>
                             <td><%=list[i].email%></td>
+                            <td><%=list[i].role[0].title%></td>
                             <td class="text-center">
-                                <a href="/admin/manager/edit?id=<%=list[i]._id%>">修改</a>  删除
+                                <a href="/admin/manager/edit?id=<%=list[i]._id%>">修改</a>  
+                                <a href="/admin/delete?id=<%=list[i]._id%>&model=Admin">删除</a>
                             </td>
                         </tr>
                     <%}%>

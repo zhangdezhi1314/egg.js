@@ -25,12 +25,7 @@
                                     管理员角色: 
                                     <select name="role_id" id="role_id">
                                        <%for(let i=0;i<list.length;i++){%>
-                                           <%if(list[i]._id.toString() == adminResult.role_id.toString()){%>
-                                                <option value="<%=list[i]._id%>" selected><%=list[i].title%></option>
-                                           <%} else {%>
-                                                <option value="<%=list[i]._id%>"><%=list[i].title%></option>
-                                           <%}%>
-                                          
+                                            <option value="<%=list[i]._id%>"><%=list[i].title%></option>
                                        <%}%>
                                     </select>
                                 </li>
