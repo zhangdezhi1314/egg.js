@@ -19,12 +19,19 @@ class   AccessController extends BaseController {
       }
 
       async doAdd() {
+           
             let result = this.ctx.request.body;
-            
-            let access = new this.ctx.model.Access(result)
-            access.save();
+            let module_id = result.module_id;
+           
+            //菜单或操作
+            if(module_id){
+                  module_id = await this.app.mongoose.Types.ObjectId(module_id)
+                  
+            } 
+            let access = new this.ctx.model.Access(result);
 
-      
+            access.save();
+            
             await this.success('/admin/access','增加权限成功');
 
 
