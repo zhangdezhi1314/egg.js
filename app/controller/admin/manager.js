@@ -31,6 +31,7 @@ class ManagerController extends BaseController {
   }
 
   async doAdd() {
+        let admin = null;
         let result = this.ctx.request.body;
         let username = result.username;
         let password = result.password;
@@ -38,7 +39,7 @@ class ManagerController extends BaseController {
         let email = result.email;
         let role_id = result.role_id;
 
-        let newPassword = this.service.tools.md5(password);
+        let newPassword = await this.service.tools.md5(password);
 
 
         let adminResult = await this.ctx.model.Admin.find({'username':username});
@@ -47,12 +48,12 @@ class ManagerController extends BaseController {
             await this.error('/admin/manager/add','管理员以存在');
 
         } else {
-            let admin = new this.ctx.model.Admin({
-                username,
-                newPassword,
-                mobile,
-                email,
-                role_id, 
+            admin = new this.ctx.model.Admin({
+                username:username,
+                password:newPassword,
+                mobile:mobile,
+                email:email,
+                role_id:role_id, 
             });
 
             await admin.save();
@@ -64,12 +65,19 @@ class ManagerController extends BaseController {
   }
 
   async edit() {
-      
-      let result = await this.ctx.model.Role.find();
-      
-      await this.ctx.render('admin/manager/edit',{
-          list:result
-      });
+
+       
+        let id = this.ctx.query.id;
+
+        let adminResult = await this.ctx.model.Admin.find({'_id':id});
+
+
+        let result = await this.ctx.model.Role.find();
+        
+        await this.ctx.render('admin/manager/edit',{
+            list:result,
+            adminResult:adminResult[0]
+        });
     
   }
 
