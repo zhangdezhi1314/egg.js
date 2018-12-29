@@ -59,7 +59,18 @@ class   AccessController extends BaseController {
       }
 
       async edit() {
-            this.ctx.body = '编辑权限';
+
+            let id = this.ctx.query.id;
+            let data = await this.ctx.model.Access.find({'_id':id});
+
+
+            let result = await this.ctx.model.Access.find({'module_id':'0'});
+
+            await this.ctx.render('/admin/access/edit',{
+                  list:result,
+                  item:data[0]
+            });
+
 
       }
 
