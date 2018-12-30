@@ -72,6 +72,7 @@ class   RoleController extends BaseController {
     async auth() {
         let id = this.ctx.query.id;
 
+        //获取当前用户所有权限
         let result = await this.ctx.model.Access.aggregate([
             {
                   $lookup:
@@ -88,7 +89,12 @@ class   RoleController extends BaseController {
                               module_id:'0'
                         }
                }
-        ])
+        ]);
+
+        //查询当前角色拥有那些权限
+        let accessResult = await this.ctx.model.RoleAccess.find({'role_id':id});
+        
+
 
        
         await this.ctx.render('/admin/role/auth',{
