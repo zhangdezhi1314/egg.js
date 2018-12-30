@@ -1,7 +1,7 @@
 'use strict';
 
 const Service = require('egg').Service;
-const url = require(url);
+const url = require('url');
 
 
 class  AdminService extends Service {
@@ -9,7 +9,7 @@ class  AdminService extends Service {
         //获取当前用户角色
         let userInfo = this.ctx.session.userInfo;
         let role_id = userInfo.role_id;
-        let pathname = url.parse(ctx.request.url).pathname;
+        let pathname = url.parse(this.ctx.request.url).pathname;
 
 
         //忽略权限的地址
@@ -34,8 +34,8 @@ class  AdminService extends Service {
         
         let accessUrlResult = await this.ctx.model.Access.find({'url':pathname});
 
-        if(accessUrlResult){
-            if(accessArray.indexOf(accessUrlResult._id.toString())!=-1){
+        if(accessUrlResult > 0){
+            if(accessArray.indexOf(accessUrlResult[0]._id.toString())!=-1){
                 return true;
 
             }

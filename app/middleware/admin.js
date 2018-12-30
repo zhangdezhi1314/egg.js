@@ -11,8 +11,18 @@ module.exports = options => {
         if(ctx.session.userInfo){
             //设置全局变量
             ctx.state.userInfo = ctx.session.userInfo;
+            let hasAuth = ctx.service.admin.checkAuth();
 
-            await next();
+
+            if(hasAuth){
+                await next();
+
+            } else {
+                await this.error('/admin/login','你没有权限访问');
+
+            }
+
+          
 
         } else {
             if(pathname == '/admin/login' || pathname == '/admin/doLogin' || pathname == '/admin/verify'){
