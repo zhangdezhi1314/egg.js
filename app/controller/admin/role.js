@@ -93,10 +93,31 @@ class   RoleController extends BaseController {
 
         //查询当前角色拥有那些权限
         let accessResult = await this.ctx.model.RoleAccess.find({'role_id':id});
+
+        let roleAccessArray = [];
+        for(let i=0;i<accessResult.length;i++){
+            roleAccessArray.push(accessResult[i].access_id.toString());
+
+        }
+
+
+        for(let i=0;i<result.length;i++){
+            if(roleAccessArray.indexOf(result[i]._id.toString())!=-1){
+                result[i].checked = true
+            }
+            for(let j=0;j<result[i].items.length;j++){
+               if(roleAccessArray.indexOf(result[i].items[j]._id.toString())!=-1){
+                   result[i].items[j].checked = true;
+
+               }
+
+            }
+        }
+
         
 
 
-       
+
         await this.ctx.render('/admin/role/auth',{
             list:result,
             id:id
@@ -113,17 +134,18 @@ class   RoleController extends BaseController {
         //删除当前角色下的所有权限
         await this.ctx.model.RoleAccess.deleteMany({'role_id':role_id});
 
+    
         
         //获取当前角色与权限添加到数据库中
         for(let i=0;i<access_node.length;i++){
-          let roleAccessData = new this.ctx.model.RoleAccess({
-              role_id:role_id,
-              access_id:access_node[i]
-          })
 
-          roleAccessData.save();
+            let roleAccessData = new this.ctx.model.RoleAccess({
+                role_id:role_id,
+                access_id:access_node[i]
+            })
 
-          await this.success('/admin/role?id='+role_id,'授权成功');
+            roleAccessData.save();
+            await this.success('/admin/role?id='+role_id,'授权成功');
 
 
         }
