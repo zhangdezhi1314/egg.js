@@ -40,17 +40,18 @@ class   AccessController extends BaseController {
       }
 
       async doAdd() {
-           
             let result = this.ctx.request.body;
             let module_id = result.module_id;
-           
-            //菜单或操作
-            if(module_id){
-                  result.module_id = await this.app.mongoose.Types.ObjectId(module_id)
-                  
-            } 
-            let access = new this.ctx.model.Access(result);
 
+
+            // //菜单或操作
+            if(module_id!=0){
+                  result.module_id = await this.app.mongoose.Types.ObjectId(module_id);
+  
+            } 
+
+            let access = new this.ctx.model.Access(result);   
+          
             access.save();
             
             await this.success('/admin/access','增加权限成功');
@@ -70,6 +71,23 @@ class   AccessController extends BaseController {
                   list:result,
                   item:data[0]
             });
+
+
+      }
+
+      async doEdit() {
+            let result = this.ctx.request.body;
+            let id = result.id;
+            let module_id = result.module_id;
+
+            if(module_id!=0){
+                  result.module_id = await this.app.mongoose.Types.ObjectId(module_id);
+
+            }
+
+            let update = await this.ctx.model.Access.updateOne({'_id':id},result);
+
+            await this.success('/admin/access','编辑权限成功');
 
 
       }

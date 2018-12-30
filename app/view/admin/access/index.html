@@ -63,7 +63,7 @@
                                 <td><%=list[i].description%></td>
                                 <td>
                                     <a href="/admin/access/edit?id=<%=list[i]._id%>">修改</a>
-                                    删除
+                                   
                                 </td>
                             </tr>
                             <%for(let j=0;j<list[i].items.length;j++){%>
@@ -84,7 +84,7 @@
                                             <td><%=list[i].items[j].description%></td>
                                             <td>
                                                 <a  href="/admin/access/edit?id=<%=list[i].items[j]._id%>">修改</a>
-                                                删除
+                                                <a  href="/admin/delete"></a>删除
                                             </td>
                                     </tr>    
                             <%}%>

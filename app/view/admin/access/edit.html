@@ -15,26 +15,20 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive input-form">
-                            <form action="/admin/access/doAdd" method="post">
+                            <form action="/admin/access/doEdit" method="post">
                                 <input type="hidden" name="_csrf" value="<%=csrf%>">
+                                <input type="hidden" name="id" value="<%=item.id%>"/>
                                 <ul>
                                     <li>  模块名称: <input type="text" name="module_name" value="<%=item.module_name%>"/></li>
                                     <li>
                                         
                                         节点类型:
                                         <!-- 1、表示模块   2、表示菜单     3、操作 -->
-                                        <select name="type" id="type">
-                                               <%if(item.type ==1){%>
-                                                    <option value="<%=item.type%>">模块</option>
-                                               <%} else if(item.type ==2){%>
-                                                    <option value="<%=item.type%>">菜单</option>
-                                               <%} else {%>
-                                                    <option value="<%=item.type%>">操作</option>
-                                               <%}%>
-                                               
-                                               
+                                        <select name="type" id="type"> 
+                                                <option value="<%=item.type%>" <%if(item.type ==1){%>selected<%}%>>模块</option>
+                                                <option value="<%=item.type%>" <%if(item.type ==2){%>selected<%}%>>菜单</option>
+                                                <option value="<%=item.type%>" <%if(item.type ==3){%>selected<%}%>>操作</option> 
                                         </select>
-        
                                     </li>
         
                                     <li>  操作名称: <input type="text" name="action_name" value="<%=item.action_name%>"/></li>
@@ -44,9 +38,9 @@
         
                                     <li>  所属模块:
                                             <select name="module_id" id="module_id">
-                                                    <option value="0">---顶级模块--</option>
+                                                    <option value="0"  <%if(item.module_id =="0"){%>selected<%}%>>---顶级模块--</option>
                                                     <%for(let i=0;i<list.length;i++){%>
-                                                        <option value="<%=list[i]._id%>"><%=list[i].module_name%></option>
+                                                        <option value="<%=list[i]._id%>" <%if(item.module_id.toString() == list[i].module_id.toString()){%>selected<%}%>><%=list[i].module_name%></option>
                                                     <%}%>
                                                     
                                             </select>
